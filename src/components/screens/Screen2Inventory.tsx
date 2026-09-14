@@ -33,8 +33,8 @@ export const Screen2Inventory: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
-            <ClipboardCheck className="w-3.5 h-3.5 text-slate-600" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#e6f4ef] text-[#145f4b] text-xs font-semibold mb-2 border border-[#c2e5d9]">
+            <ClipboardCheck className="w-3.5 h-3.5 text-[#145f4b]" />
             {t('Bước 2 trong 8: Thẩm định Nghĩa vụ Kiểm kê Khí nhà kính (GHG Inventory)', 'Step 2 of 8: GHG Inventory Obligation Assessment')}
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -300,7 +300,7 @@ export const Screen2Inventory: React.FC = () => {
                 onClick={() => updateField('inventory_list_match', choice)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   state.inventory_list_match === choice
-                    ? 'bg-slate-900 text-white shadow-xs'
+                    ? 'bg-[#145f4b] text-white shadow-xs'
                     : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
@@ -323,7 +323,7 @@ export const Screen2Inventory: React.FC = () => {
           <button
             type="button"
             onClick={() => setCurrentScreen(3)}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 shadow-xs transition-all cursor-pointer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#145f4b] text-white font-semibold text-xs hover:bg-[#0f4f3e] shadow-xs transition-all cursor-pointer"
           >
             <span>{t('Tiếp theo: Kiểm tra Nghĩa vụ Hạn ngạch ETS', 'Next: Check ETS Quota Obligation')}</span>
             <ArrowRight className="w-3.5 h-3.5" />

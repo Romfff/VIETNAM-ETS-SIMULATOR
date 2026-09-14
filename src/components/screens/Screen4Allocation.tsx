@@ -34,8 +34,8 @@ export const Screen4Allocation: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
-            <Calculator className="w-3.5 h-3.5 text-slate-600" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#e6f4ef] text-[#145f4b] text-xs font-semibold mb-2 border border-[#c2e5d9]">
+            <Calculator className="w-3.5 h-3.5 text-[#145f4b]" />
             {t('Bước 4 trong 8: Mô phỏng Công thức Phân bổ Hạn ngạch (Method 01)', 'Step 4 of 8: Allocation Formula Simulation')}
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -66,7 +66,7 @@ export const Screen4Allocation: React.FC = () => {
               onClick={() => updateField('allocation_year', 2025)}
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 state.allocation_year === 2025
-                  ? 'bg-white text-blue-700 shadow-xs'
+                  ? 'bg-white text-emerald-800 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -77,7 +77,7 @@ export const Screen4Allocation: React.FC = () => {
               onClick={() => updateField('allocation_year', 2026)}
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 state.allocation_year === 2026
-                  ? 'bg-white text-blue-700 shadow-xs'
+                  ? 'bg-white text-emerald-800 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -108,29 +108,29 @@ export const Screen4Allocation: React.FC = () => {
         
         {/* Step 1: P_avg */}
         <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-2">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+          <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
             <span>{t('1. Sản lượng TB', '1. Avg Production')}</span>
-            <span className="font-mono text-blue-600 font-bold">P̄</span>
+            <span className="font-mono font-bold text-slate-700">P̄</span>
           </div>
-          <div className="text-xl font-extrabold text-slate-900 font-mono truncate">
+          <div className="text-xl font-extrabold font-mono truncate text-slate-900 tabular-nums">
             {allocationResult.pAvg !== null ? allocationResult.pAvg.toLocaleString(undefined, { maximumFractionDigits: 1 }) : '—'}
           </div>
-          <div className="text-[10px] text-slate-500 font-mono line-clamp-1" title={allocationResult.formulaBreakdown.pAvgFormula}>
-            {allocationResult.formulaBreakdown.pAvgFormula}
+          <div className="text-[10px] text-slate-400 font-mono line-clamp-1">
+            {selectedFacility?.product_unit || t('đơn vị SP', 'units')}
           </div>
         </div>
 
         {/* Step 2: E_avg */}
         <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-2">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+          <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
             <span>{t('2. Phát thải TB', '2. Avg Emissions')}</span>
-            <span className="font-mono text-blue-600 font-bold">Ē</span>
+            <span className="font-mono font-bold text-slate-700">Ē</span>
           </div>
-          <div className="text-xl font-extrabold text-slate-900 font-mono truncate">
+          <div className="text-xl font-extrabold font-mono truncate text-slate-900 tabular-nums">
             {allocationResult.eAvg !== null ? allocationResult.eAvg.toLocaleString(undefined, { maximumFractionDigits: 1 }) : '—'}
           </div>
-          <div className="text-[10px] text-slate-500 font-mono line-clamp-1" title={allocationResult.formulaBreakdown.eAvgFormula}>
-            {allocationResult.formulaBreakdown.eAvgFormula}
+          <div className="text-[10px] text-slate-400 font-mono line-clamp-1">
+            tCO2e (y-1, y-2, y-3)
           </div>
         </div>
 
@@ -138,14 +138,14 @@ export const Screen4Allocation: React.FC = () => {
         <div className={`rounded-2xl border p-4 shadow-xs space-y-2 ${
           allocationResult.isBenchmarkOverride ? 'bg-amber-50/40 border-amber-300' : 'bg-white border-slate-200'
         }`}>
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+          <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
             <span>{t('3. Định mức Ngành', '3. Benchmark')}</span>
-            <span className="font-mono text-blue-600 font-bold">B</span>
+            <span className="font-mono font-bold text-slate-700">B</span>
           </div>
-          <div className="text-xl font-extrabold text-slate-900 font-mono truncate">
+          <div className="text-xl font-extrabold font-mono truncate text-slate-900 tabular-nums">
             {allocationResult.benchmarkB !== null ? allocationResult.benchmarkB : '—'}
           </div>
-          <div className="text-[10px] text-slate-500 line-clamp-1">
+          <div className="text-[10px] text-slate-400 font-mono line-clamp-1">
             {allocationResult.isBenchmarkOverride ? t('Kịch bản override', 'Scenario override') : t('Chưa có số liệu', 'Unavailable')}
           </div>
         </div>
@@ -154,28 +154,28 @@ export const Screen4Allocation: React.FC = () => {
         <div className={`rounded-2xl border p-4 shadow-xs space-y-2 ${
           allocationResult.factorT === null ? 'bg-rose-50/40 border-rose-300' : 'bg-white border-slate-200'
         }`}>
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+          <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center justify-between">
             <span>{t('4. Hệ số Điều chỉnh', '4. Factor T')}</span>
-            <span className="font-mono text-blue-600 font-bold">T</span>
+            <span className="font-mono font-bold text-slate-700">T</span>
           </div>
-          <div className="text-xl font-extrabold text-slate-900 font-mono truncate">
+          <div className="text-xl font-extrabold font-mono truncate text-slate-900 tabular-nums">
             {allocationResult.factorT !== null ? allocationResult.factorT.toFixed(4) : '—'}
           </div>
-          <div className="text-[10px] text-slate-500 font-mono line-clamp-1" title={allocationResult.formulaBreakdown.tFormula}>
+          <div className="text-[10px] text-slate-400 font-mono line-clamp-1" title={allocationResult.formulaBreakdown.tFormula}>
             {allocationResult.factorT !== null ? `(1+g)(1-r) = ${allocationResult.factorT.toFixed(4)}` : t('Dừng: Thiếu g/r', 'Stopped: Missing g/r')}
           </div>
         </div>
 
         {/* Step 5: Calculated Allowance A */}
-        <div className="bg-slate-900 rounded-2xl p-4 text-white shadow-xs border border-slate-800 space-y-2">
-          <div className="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-[#145f4b] rounded-2xl p-4 text-white shadow-xs border border-[#0f4f3e] space-y-2">
+          <div className="text-[11px] font-bold text-emerald-100 uppercase tracking-wider flex items-center justify-between">
             <span>{t('5. Hạn ngạch Tính toán', '5. Calculated A')}</span>
-            <span className="font-mono font-bold text-emerald-400">A</span>
+            <span className="font-mono font-bold text-white">A</span>
           </div>
-          <div className="text-xl font-extrabold font-mono truncate text-emerald-400 tabular-nums">
+          <div className="text-xl font-extrabold font-mono truncate text-white tabular-nums">
             {allocationResult.calculatedA !== null ? allocationResult.calculatedA.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '—'}
           </div>
-          <div className="text-[10px] text-slate-400 font-mono line-clamp-1">
+          <div className="text-[10px] text-emerald-200 font-mono line-clamp-1">
             tCO2e (P̄ × B × T)
           </div>
         </div>
@@ -451,7 +451,7 @@ export const Screen4Allocation: React.FC = () => {
         <button
           type="button"
           onClick={() => setCurrentScreen(5)}
-          className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 shadow-xs transition-all cursor-pointer"
+          className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#145f4b] text-white font-semibold text-xs hover:bg-[#0f4f3e] shadow-xs transition-all cursor-pointer"
         >
           <span>{t('Tiếp theo: Tính toán Vị thế Tuân thủ (Compliance Gap)', 'Next: Simulate Compliance Position')}</span>
           <ArrowRight className="w-3.5 h-3.5" />

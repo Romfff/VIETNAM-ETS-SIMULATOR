@@ -72,7 +72,7 @@ export const TestSuiteModal: React.FC<TestSuiteModalProps> = ({ isOpen, onClose 
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#0a231c]/70 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -80,9 +80,9 @@ export const TestSuiteModal: React.FC<TestSuiteModalProps> = ({ isOpen, onClose 
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-4xl overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-150">
         
         {/* Modal Header */}
-        <div className="bg-slate-900 text-white px-6 py-5 flex items-center justify-between shrink-0">
+        <div className="bg-[#145f4b] text-white px-6 py-5 flex items-center justify-between shrink-0 border-b border-[#0f4f3e]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center border border-emerald-500/30">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
@@ -90,11 +90,11 @@ export const TestSuiteModal: React.FC<TestSuiteModalProps> = ({ isOpen, onClose 
                 <h3 className="text-base font-bold">
                   {t('Bộ Kiểm thử Tự động 35/35 Test Cases', 'Automated Test Suite (35/35 Cases)')}
                 </h3>
-                <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-200 px-2 py-0.5 rounded-full font-bold">
                   {testSummary ? `${testSummary.passed}/${testSummary.total} PASS` : 'READY'}
                 </span>
               </div>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-emerald-100">
                 {t('Kiểm toán tự động logic Excel, giới hạn pháp lý và dữ liệu 110 cơ sở', 'Automated validation of Excel logic, legal guardrails & 110 facilities')}
               </p>
             </div>
@@ -113,12 +113,12 @@ export const TestSuiteModal: React.FC<TestSuiteModalProps> = ({ isOpen, onClose 
             <button
               type="button"
               onClick={onClose}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-semibold border border-slate-700 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0f4f3e] hover:bg-[#0a382c] text-emerald-100 hover:text-white text-xs font-semibold border border-[#0d4435] transition-colors cursor-pointer"
               title={t('Đóng bảng kiểm thử (Esc)', 'Close Test Suite (Esc)')}
             >
               <X className="w-4 h-4" />
               <span>{t('Đóng', 'Close')}</span>
-              <kbd className="hidden sm:inline-block px-1 py-0.2 text-[9px] bg-slate-700 text-slate-300 rounded font-mono font-normal">Esc</kbd>
+              <kbd className="hidden sm:inline-block px-1 py-0.2 text-[9px] bg-[#0c3d30] text-emerald-200 rounded font-mono font-normal">Esc</kbd>
             </button>
           </div>
         </div>
@@ -132,7 +132,7 @@ export const TestSuiteModal: React.FC<TestSuiteModalProps> = ({ isOpen, onClose 
               placeholder={t('Lọc theo mã TC, nội dung, căn cứ...', 'Filter test ID, name, legal basis...')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 rounded-lg border border-slate-300 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full pl-9 pr-3 py-1.5 rounded-lg border border-slate-300 text-xs bg-white focus:outline-none focus:ring-1 focus:ring-[#145f4b]"
             />
           </div>
 
@@ -144,7 +144,7 @@ export const TestSuiteModal: React.FC<TestSuiteModalProps> = ({ isOpen, onClose 
                 onClick={() => setActiveCategory(cat)}
                 className={`px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeCategory === cat
-                    ? 'bg-slate-900 text-white'
+                    ? 'bg-[#145f4b] text-white shadow-2xs'
                     : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
                 }`}
               >

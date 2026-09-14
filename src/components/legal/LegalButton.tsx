@@ -29,10 +29,10 @@ export const LegalButton: React.FC<LegalButtonProps> = ({
     <button
       type="button"
       onClick={() => openLegalDrawer(ruleId)}
-      className={`inline-flex items-center font-semibold rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 hover:text-slate-900 border border-slate-200 transition-colors shadow-2xs cursor-pointer ${sizeClasses} ${className}`}
+      className={`inline-flex items-center font-semibold rounded-lg text-[#145f4b] bg-[#eef7f3] hover:bg-[#e1f2ec] hover:text-[#0f4f3e] border border-[#c5e5db] transition-colors shadow-2xs cursor-pointer ${sizeClasses} ${className}`}
       title={t('Xem căn cứ pháp lý và nguồn chính thức', 'View legal basis and official source')}
     >
-      <BookOpen className={size === 'sm' ? 'w-3.5 h-3.5 text-slate-500' : 'w-4 h-4 text-slate-500'} />
+      <BookOpen className={size === 'sm' ? 'w-3.5 h-3.5 text-[#145f4b]' : 'w-4 h-4 text-[#145f4b]'} />
       <span>{t(labelVi, labelEn)}</span>
     </button>
   );

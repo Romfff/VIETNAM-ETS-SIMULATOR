@@ -29,8 +29,8 @@ export const Screen3Quota: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
-            <Layers className="w-3.5 h-3.5 text-slate-600" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#e6f4ef] text-[#145f4b] text-xs font-semibold mb-2 border border-[#c2e5d9]">
+            <Layers className="w-3.5 h-3.5 text-[#145f4b]" />
             {t('Bước 3 trong 8: Thẩm định Nghĩa vụ Hạn ngạch ETS Thí điểm', 'Step 3 of 8: ETS Pilot Quota Allocation Scope')}
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -95,14 +95,14 @@ export const Screen3Quota: React.FC = () => {
               <div className="text-[11px] text-slate-400 mt-0.5">tCO2e ({selectedFacility.product_vi})</div>
             </div>
 
-            <div className="bg-slate-900 rounded-xl p-4 text-white shadow-xs border border-slate-800">
-              <div className="text-xs font-semibold text-slate-300 mb-1">
+            <div className="bg-[#145f4b] rounded-xl p-4 text-white shadow-xs border border-[#0f4f3e]">
+              <div className="text-xs font-semibold text-emerald-100 mb-1">
                 {t('Tổng hạn ngạch Giai đoạn 2025–2026', 'Phase Allocation Total')}
               </div>
-              <div className="text-2xl font-extrabold font-mono text-emerald-400 tabular-nums">
+              <div className="text-2xl font-extrabold font-mono text-white tabular-nums">
                 {selectedFacility.allocation_total.toLocaleString()}
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5 font-mono">tCO2e {t('(Dùng cho Tuân thủ)', '(For Compliance)')}</div>
+              <div className="text-[11px] text-emerald-200 mt-0.5 font-mono">tCO2e {t('(Dùng cho Tuân thủ)', '(For Compliance)')}</div>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@ export const Screen3Quota: React.FC = () => {
         <button
           type="button"
           onClick={() => setCurrentScreen(4)}
-          className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 shadow-xs transition-all shrink-0 cursor-pointer"
+          className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#145f4b] text-white font-semibold text-xs hover:bg-[#0f4f3e] shadow-xs transition-all shrink-0 cursor-pointer"
         >
           <span>{t('Mở Mô phỏng Công thức (Allocation Sim)', 'Open Allocation Simulator')}</span>
           <ArrowRight className="w-3.5 h-3.5" />

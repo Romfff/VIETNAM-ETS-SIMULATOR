@@ -23,8 +23,8 @@ export const Screen7Quality: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
-            <CheckSquare className="w-3.5 h-3.5 text-slate-600" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#e6f4ef] text-[#145f4b] text-xs font-semibold mb-2 border border-[#c2e5d9]">
+            <CheckSquare className="w-3.5 h-3.5 text-[#145f4b]" />
             {t('Bước 7 trong 8: Ma trận Chất lượng Dữ liệu & Tính không chắc chắn', 'Step 7 of 8: Data Quality & Uncertainty Matrix')}
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -152,7 +152,7 @@ export const Screen7Quality: React.FC = () => {
         <button
           type="button"
           onClick={() => setCurrentScreen(8)}
-          className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 shadow-xs transition-all cursor-pointer"
+          className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#145f4b] text-white font-semibold text-xs hover:bg-[#0f4f3e] shadow-xs transition-all cursor-pointer"
         >
           <span>{t('Tiếp theo: Báo cáo Tổng kết & Xuất tệp', 'Next: Executive Summary & Export')}</span>
           <ArrowRight className="w-3.5 h-3.5" />

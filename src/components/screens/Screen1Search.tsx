@@ -66,14 +66,14 @@ export const Screen1Search: React.FC = () => {
     <div className="space-y-6">
       
       {/* Top Professional Header Banner */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl border border-[#d8ece4] p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="max-w-3xl space-y-2">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold border border-slate-200">
-            <Landmark className="w-3.5 h-3.5 text-slate-600" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#e6f4ef] text-[#145f4b] text-xs font-semibold border border-[#c2e5d9]">
+            <Landmark className="w-3.5 h-3.5 text-[#145f4b]" />
             <span>{t('Phân hệ 01: Nhận diện Cơ sở & Căn cứ Dữ liệu Giai đoạn 2025–2026', 'Module 01: Facility Identification & 2025–2026 Regulatory Scope')}</span>
           </div>
           
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-950 tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             {t('Tra cứu Cơ sở Thuộc Danh mục Hạn ngạch Quyết định 699', 'Facility Lookup — Official Decision 699 Quota Register')}
           </h2>
           
@@ -92,14 +92,14 @@ export const Screen1Search: React.FC = () => {
       </div>
 
       {/* Mode Switcher: Official 110 vs Manual Mode */}
-      <div className="flex items-center justify-between bg-white rounded-xl border border-slate-200 p-1.5 shadow-2xs">
+      <div className="flex items-center justify-between bg-white rounded-xl border border-[#d8ece4] p-1.5 shadow-2xs">
         <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={() => setManualMode(false)}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
               !state.is_manual
-                ? 'bg-slate-900 text-white shadow-xs'
+                ? 'bg-[#145f4b] text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
@@ -112,7 +112,7 @@ export const Screen1Search: React.FC = () => {
             onClick={() => setManualMode(true)}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
               state.is_manual
-                ? 'bg-slate-900 text-white shadow-xs'
+                ? 'bg-[#145f4b] text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
@@ -209,7 +209,7 @@ export const Screen1Search: React.FC = () => {
             <button
               type="button"
               onClick={() => setCurrentScreen(2)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 shadow-xs transition-all cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#145f4b] text-white font-semibold text-xs hover:bg-[#0f4f3e] shadow-xs transition-all cursor-pointer"
             >
               <span>{t('Tiếp tục: Kiểm tra Nghĩa vụ Kiểm kê', 'Next: Check Inventory Obligation')}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -231,7 +231,7 @@ export const Screen1Search: React.FC = () => {
                 placeholder={t('Tra cứu mã cơ sở (F001–F110), tên nhà máy, mã số thuế...', 'Search by ID (F001–F110), facility name, tax ID, province...')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 focus:outline-none shadow-2xs"
+                className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:ring-2 focus:ring-[#145f4b]/20 focus:border-[#145f4b] focus:outline-none shadow-2xs"
               />
             </div>
 
@@ -246,7 +246,7 @@ export const Screen1Search: React.FC = () => {
                     onClick={() => setSelectedSector(sector)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
                       isSelected
-                        ? 'bg-slate-900 text-white shadow-xs'
+                        ? 'bg-[#145f4b] text-white shadow-xs'
                         : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
                     }`}
                   >
@@ -287,7 +287,7 @@ export const Screen1Search: React.FC = () => {
                       onClick={() => selectFacility(facility.id)}
                       className={`p-3.5 transition-all cursor-pointer flex items-center justify-between gap-3 ${
                         isSelected
-                          ? 'bg-slate-100/80 border-l-4 border-l-slate-900'
+                          ? 'bg-emerald-50/70 border-l-4 border-l-[#145f4b]'
                           : 'hover:bg-slate-50'
                       }`}
                     >
@@ -295,7 +295,7 @@ export const Screen1Search: React.FC = () => {
                         <div
                           className={`w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
                             isSelected
-                              ? 'bg-slate-900 text-white'
+                              ? 'bg-[#145f4b] text-white shadow-2xs'
                               : 'bg-slate-100 text-slate-700 border border-slate-200'
                           }`}
                         >
@@ -396,8 +396,8 @@ export const Screen1Search: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bg-slate-900 rounded-lg p-3 text-white flex items-center justify-between">
-                    <span className="text-xs font-semibold text-slate-200">
+                  <div className="bg-[#145f4b] rounded-lg p-3 text-white flex items-center justify-between border border-[#0f4f3e] shadow-xs">
+                    <span className="text-xs font-semibold text-emerald-100">
                       {t('Tổng hạn ngạch chu kỳ 2025–2026', 'Phase Total')}
                     </span>
                     <span className="text-sm font-bold font-mono tabular-nums text-white">
@@ -419,7 +419,7 @@ export const Screen1Search: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setCurrentScreen(2)}
-                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 shadow-xs transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#145f4b] text-white font-semibold text-xs hover:bg-[#0f4f3e] shadow-xs transition-all cursor-pointer"
                   >
                     <span>{t('Tiến hành Thẩm định Nghĩa vụ Kiểm kê', 'Proceed to Assessment')}</span>
                     <ArrowRight className="w-3.5 h-3.5" />

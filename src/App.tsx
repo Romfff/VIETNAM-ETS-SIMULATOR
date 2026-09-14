@@ -21,7 +21,7 @@ export const App: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#f4f9f6]">
       
       {/* Top Corporate Navbar */}
       <Navbar />
@@ -51,7 +51,7 @@ export const App: React.FC = () => {
       <TestSuiteModal isOpen={isTestModalOpen} onClose={() => setIsTestModalOpen(false)} />
 
       {/* Enterprise Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-12 py-8 text-xs text-slate-500 print:hidden">
+      <footer className="bg-white border-t border-[#d8ece4] mt-12 py-8 text-xs text-slate-500 print:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-emerald-600" />

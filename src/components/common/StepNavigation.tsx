@@ -96,9 +96,9 @@ export const StepNavigation: React.FC = () => {
                 onClick={() => setCurrentScreen(step.number)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-slate-900 text-white shadow-xs'
+                    ? 'bg-[#145f4b] text-white shadow-xs ring-1 ring-[#0f4f3e]'
                     : isCompleted
-                      ? 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200'
+                      ? 'bg-emerald-50/70 text-[#145f4b] hover:bg-emerald-100/60 border border-emerald-200/80'
                       : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50'
                 }`}
               >
@@ -107,7 +107,7 @@ export const StepNavigation: React.FC = () => {
                     isActive
                       ? 'bg-white/20 text-white'
                       : isCompleted
-                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                        ? 'bg-emerald-100 text-[#145f4b] border border-emerald-300'
                         : 'bg-slate-100 text-slate-500 border border-slate-200'
                   }`}
                 >
@@ -153,7 +153,7 @@ export const StepNavigation: React.FC = () => {
               type="button"
               disabled={currentScreen >= 8}
               onClick={() => setCurrentScreen(currentScreen + 1)}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer font-semibold shadow-2xs"
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#145f4b] text-white hover:bg-[#0f4f3e] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer font-semibold shadow-2xs"
             >
               <span>{t('Tiếp theo', 'Next')}</span>
               <ChevronRight className="w-3.5 h-3.5" />

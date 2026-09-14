@@ -36,12 +36,12 @@ export const Navbar: React.FC = () => {
           
           {/* Institutional Logo & Platform Title */}
           <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center border border-slate-800 shadow-xs">
-              <Landmark className="w-5 h-5 text-slate-100" />
+            <div className="w-10 h-10 rounded-xl bg-[#145f4b] text-white flex items-center justify-center border border-[#0f4f3e] shadow-xs">
+              <Landmark className="w-5 h-5 text-emerald-100" />
             </div>
             <div>
               <div className="flex items-center gap-2.5">
-                <span className="font-extrabold text-base sm:text-lg text-slate-950 tracking-tight">
+                <span className="font-extrabold text-base sm:text-lg text-[#145f4b] tracking-tight">
                   VIETNAM ETS SIMULATOR
                 </span>
               </div>
@@ -129,7 +129,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsPrintModalOpen(true)}
-              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-xs transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-[#145f4b] hover:bg-[#0f4f3e] rounded-xl shadow-xs transition-all cursor-pointer"
               title={t('In hoặc xuất báo cáo PDF chuẩn doanh nghiệp', 'Print or export enterprise PDF report')}
             >
               <Printer className="w-3.5 h-3.5" />

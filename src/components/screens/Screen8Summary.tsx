@@ -103,8 +103,8 @@ export const Screen8Summary: React.FC = () => {
       {/* Top Banner & Export Actions */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
-            <FileCheck2 className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e6f4ef] text-[#145f4b] text-xs font-semibold mb-2 border border-[#c2e5d9]">
+            <FileCheck2 className="w-3.5 h-3.5 text-[#145f4b]" />
             {t('Phân hệ 08: Hồ sơ Tổng kết & Báo cáo Thẩm định Doanh nghiệp', 'Module 08: Executive Summary & Audit Report')}
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -131,7 +131,7 @@ export const Screen8Summary: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsPrintModalOpen(true)}
-            className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-500/20 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#145f4b] hover:bg-[#0f4f3e] text-white font-bold text-xs shadow-md shadow-[#145f4b]/20 transition-all cursor-pointer"
           >
             <Printer className="w-4 h-4" />
             <span>{t('In / Tải PDF Báo cáo', 'Print / Download PDF')}</span>
@@ -145,7 +145,7 @@ export const Screen8Summary: React.FC = () => {
         {/* Dossier Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-extrabold font-mono text-sm border border-slate-800 shadow-xs">
+            <div className="w-12 h-12 rounded-xl bg-[#145f4b] text-white flex items-center justify-center font-extrabold font-mono text-sm border border-[#0f4f3e] shadow-xs">
               {selectedFacility?.id || 'F-NEW'}
             </div>
             <div>
@@ -336,7 +336,7 @@ export const Screen8Summary: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsPrintModalOpen(true)}
-              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-500/20 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[#145f4b] hover:bg-[#0f4f3e] text-white text-xs font-bold shadow-md shadow-[#145f4b]/20 transition-all cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>{t('In Báo cáo Thẩm định', 'Print Official Dossier')}</span>

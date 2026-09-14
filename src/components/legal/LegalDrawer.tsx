@@ -23,11 +23,11 @@ export const LegalDrawer: React.FC = () => {
           {/* Header */}
           <div className="p-6 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-mono font-bold text-sm shadow-xs border border-slate-800">
+              <div className="w-10 h-10 rounded-xl bg-[#145f4b] text-white flex items-center justify-center font-mono font-bold text-sm shadow-xs border border-[#0f4f3e]">
                 {activeLegalRule?.id || 'LAW'}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-slate-950">
+                <h3 className="text-lg font-bold text-slate-900">
                   {t('Hồ sơ Pháp lý & Minh bạch', 'Legal & Audit Documentation')}
                 </h3>
                 <p className="text-xs text-slate-500">
@@ -129,12 +129,12 @@ export const LegalDrawer: React.FC = () => {
                     onClick={() => openLegalDrawer(rule)}
                     className={`w-full text-left p-2.5 rounded-lg border text-xs transition-all flex items-center justify-between ${
                       activeLegalRule?.id === rule.id
-                        ? 'bg-blue-50 border-blue-300 font-semibold text-blue-900'
+                        ? 'bg-[#e6f4ef] border-[#a5d8c9] font-semibold text-[#145f4b]'
                         : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
                     }`}
                   >
                     <span className="truncate pr-2">
-                      <span className="font-mono font-bold text-blue-600 mr-2">{rule.id}</span>
+                      <span className="font-mono font-bold text-[#145f4b] mr-2">{rule.id}</span>
                       {rule.legal_basis} — {language === 'vi' ? (rule.topic_vi || rule.topic) : rule.topic}
                     </span>
                     <span className="text-[10px] text-slate-400 whitespace-nowrap">

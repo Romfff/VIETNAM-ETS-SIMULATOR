@@ -41,7 +41,7 @@ export const PrintableReportModal: React.FC = () => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 md:p-6 print:p-0 print:bg-white print:static print:inset-auto animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#0a231c]/70 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 md:p-6 print:p-0 print:bg-white print:static print:inset-auto animate-in fade-in duration-150"
       onClick={(e) => {
         if (e.target === e.currentTarget) setIsPrintModalOpen(false);
       }}
@@ -51,16 +51,16 @@ export const PrintableReportModal: React.FC = () => {
       <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden print:max-h-none print:overflow-visible print:border-none print:shadow-none print:rounded-none animate-in zoom-in-95 duration-150">
         
         {/* Top Screen Action Header (Sticky, always visible, hidden in print) */}
-        <div className="sticky top-0 z-20 shrink-0 bg-slate-900 text-white px-5 sm:px-6 py-3.5 flex items-center justify-between border-b border-slate-800 print:hidden">
+        <div className="sticky top-0 z-20 shrink-0 bg-[#145f4b] text-white px-5 sm:px-6 py-3.5 flex items-center justify-between border-b border-[#0f4f3e] print:hidden">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30 shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center border border-emerald-500/30 shrink-0">
               <Printer className="w-4 h-4" />
             </div>
             <div>
               <span className="font-bold text-sm block leading-tight">
                 {t('Bản in Báo cáo Thẩm định Doanh nghiệp', 'Executive Printable Report Preview')}
               </span>
-              <span className="text-[11px] text-slate-400 font-mono hidden sm:inline">
+              <span className="text-[11px] text-emerald-200 font-mono hidden sm:inline">
                 DOC-ETS-{selectedFacility?.id || 'MAN'}-{state.assessment_date.replace(/-/g, '')}
               </span>
             </div>
@@ -80,12 +80,12 @@ export const PrintableReportModal: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsPrintModalOpen(false)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-semibold border border-slate-700 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0f4f3e] hover:bg-[#0a382c] text-emerald-100 hover:text-white text-xs font-semibold border border-[#0d4435] transition-colors cursor-pointer"
               title={t('Đóng bản xem trước (Esc)', 'Close Preview (Esc)')}
             >
               <X className="w-4 h-4" />
               <span>{t('Đóng', 'Close')}</span>
-              <kbd className="hidden sm:inline-block px-1 py-0.2 text-[9px] bg-slate-700 text-slate-300 rounded font-mono font-normal">Esc</kbd>
+              <kbd className="hidden sm:inline-block px-1 py-0.2 text-[9px] bg-[#0c3d30] text-emerald-200 rounded font-mono font-normal">Esc</kbd>
             </button>
           </div>
         </div>
@@ -94,7 +94,7 @@ export const PrintableReportModal: React.FC = () => {
         <div className="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6 text-slate-900 print:p-0 print:overflow-visible">
           
           {/* Official Letterhead */}
-          <div className="border-b-2 border-slate-900 pb-4 flex items-start justify-between">
+          <div className="border-b-2 border-[#145f4b] pb-4 flex items-start justify-between">
             <div>
               <div className="text-[11px] font-extrabold uppercase tracking-widest text-slate-500">
                 VIETNAM EMISSION TRADING SCHEME (ETS) SIMULATOR
