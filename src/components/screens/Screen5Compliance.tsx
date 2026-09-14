@@ -40,12 +40,6 @@ export const Screen5Compliance: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
             {t('Hạn ngạch hiện có đủ hay thiếu so với phát thải thực tế?', 'Do you have sufficient allowances to cover actual emissions?')}
           </h2>
-          <p className="text-xs text-slate-500 mt-1 max-w-2xl">
-            {t(
-              'Căn cứ Điều 19 Văn bản hợp nhất 48/VBHN-BNNMT về nghĩa vụ nộp bù hạn ngạch, trần bù trừ tín chỉ carbon (30%) và trần vay mượn hạn ngạch (15%).',
-              'Pursuant to Article 19 Decree 48 regarding allowance surrender, 30% carbon credit offset cap, and 15% borrowing cap.'
-            )}
-          </p>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
@@ -141,7 +135,7 @@ export const Screen5Compliance: React.FC = () => {
               {complianceResult.surrenderDeadline}
             </div>
             <div className="text-[11px] text-slate-500">
-              {t('Trước 31/12 của năm liền sau giai đoạn phân bổ (Điều 19.5.b)', 'Before Dec 31 of following year (Art 19.5.b)')}
+              {t('Trước 31/12 của năm liền sau giai đoạn phân bổ', 'Before Dec 31 of following year')}
             </div>
           </div>
         </div>
@@ -274,7 +268,7 @@ export const Screen5Compliance: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-xs font-bold text-slate-900">
-                  {t('1. Tín chỉ Carbon sử dụng để Bù trừ (Điều 19.8)', '1. Carbon Credits Used for Offset (Art 19.8)')}
+                  {t('1. Tín chỉ Carbon sử dụng để Bù trừ', '1. Carbon Credits Used for Offset')}
                 </h4>
                 <p className="text-[11px] text-slate-500">
                   {t('Tối đa không quá 30% tổng số hạn ngạch được phân bổ.', 'Capped at 30% of total allocated allowances.')}
@@ -312,7 +306,7 @@ export const Screen5Compliance: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-xs font-bold text-slate-900">
-                  {t('2. Vay mượn Hạn ngạch từ Kỳ sau (Điều 19.6)', '2. Borrowing from Next Phase (Art 19.6)')}
+                  {t('2. Vay mượn Hạn ngạch từ Kỳ sau', '2. Borrowing from Next Phase')}
                 </h4>
                 <p className="text-[11px] text-slate-500">
                   {t('Tối đa không quá 15% tổng hạn ngạch (áp dụng đến hết năm 2030).', 'Capped at 15% of phase allocation through end-2030.')}

@@ -386,7 +386,7 @@ export const Screen4Allocation: React.FC = () => {
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <div>
               <h3 className="text-sm font-bold text-slate-900">
-                {t('So sánh Hạn ngạch Tính toán (A) với Hạn ngạch Phân bổ Thực tế (QĐ 699)', 'Comparison: Simulated Allowance A vs Official Allocation (Decision 699)')}
+                {t('So sánh Hạn ngạch Tính toán (A) với Hạn ngạch Phân bổ Thực tế', 'Comparison: Simulated Allowance A vs Official Allocation')}
               </h3>
               <p className="text-xs text-slate-500">
                 {t('Phục vụ phân tích, kiểm thử và tái hiện phương pháp luận của cơ quan quản lý.', 'Used for methodology reproduction, scenario testing, and validation.')}

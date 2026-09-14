@@ -143,7 +143,7 @@ export const Screen2Inventory: React.FC = () => {
         <div className="border-b border-slate-100 pb-4 flex items-center justify-between">
           <div>
             <h3 className="text-base font-bold text-slate-900">
-              {t('Đối chiếu Tiêu chí Định lượng (Điều 6)', 'Article 6 Quantitative Criteria Checklist')}
+              {t('Đối chiếu Tiêu chí Định lượng', 'Quantitative Criteria Checklist')}
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
               {t('Hệ thống kiểm tra các ngưỡng phát thải và tiêu thụ năng lượng theo luật định.', 'Simulator checks statutory emission and energy consumption thresholds.')}

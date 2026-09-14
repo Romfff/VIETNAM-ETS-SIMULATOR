@@ -26,13 +26,17 @@ export const Screen6Legal: React.FC = () => {
   }, [legalRules]);
 
   const filteredRules = useMemo(() => {
+    const query = searchQuery.toLowerCase().trim();
     return legalRules.filter(r => {
+      const topicText = `${r.topic} ${r.topic_vi || ''}`.toLowerCase();
+      const ruleText = `${r.rule} ${r.rule_vi || ''}`.toLowerCase();
+      const articleText = `${r.article} ${r.article_vi || ''}`.toLowerCase();
       const matchesSearch = 
-        r.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        r.topic.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        r.legal_basis.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        r.rule.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        r.article.toLowerCase().includes(searchQuery.toLowerCase());
+        r.id.toLowerCase().includes(query) ||
+        topicText.includes(query) ||
+        r.legal_basis.toLowerCase().includes(query) ||
+        ruleText.includes(query) ||
+        articleText.includes(query);
 
       const matchesTopic = selectedTopic === 'All' || r.topic === selectedTopic;
 
@@ -83,9 +87,13 @@ export const Screen6Legal: React.FC = () => {
             className="px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white"
           >
             <option value="All">{t('Tất cả chủ đề', 'All Topics')}</option>
-            {topics.filter(t => t !== 'All').map(t => (
-              <option key={t} value={t}>{t}</option>
-            ))}
+            {topics.filter(t => t !== 'All').map(tName => {
+              const sample = legalRules.find(r => r.topic === tName);
+              const label = language === 'vi' ? (sample?.topic_vi || tName) : tName;
+              return (
+                <option key={tName} value={tName}>{label}</option>
+              );
+            })}
           </select>
         </div>
       </div>
@@ -105,32 +113,32 @@ export const Screen6Legal: React.FC = () => {
                   </span>
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-                      {rule.topic}
+                      {language === 'vi' ? (rule.topic_vi || rule.topic) : rule.topic}
                     </span>
                     <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                      {rule.legal_basis} — {rule.article}
+                      {rule.legal_basis} — {language === 'vi' ? (rule.article_vi || rule.article) : rule.article}
                     </h4>
                   </div>
                 </div>
 
                 <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full shrink-0">
-                  {rule.effective_status}
+                  {language === 'vi' ? (rule.effective_status_vi || rule.effective_status) : rule.effective_status}
                 </span>
               </div>
 
               <p className="text-xs text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100 leading-relaxed font-medium">
-                "{rule.rule}"
+                "{language === 'vi' ? (rule.rule_vi || rule.rule) : rule.rule}"
               </p>
 
               <div className="text-[11px] text-slate-500 flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                <span>{rule.simulator_use}</span>
+                <span>{language === 'vi' ? (rule.simulator_use_vi || rule.simulator_use) : rule.simulator_use}</span>
               </div>
 
-              {rule.caution && (
+              {(rule.caution || rule.caution_vi) && (
                 <div className="text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg border border-amber-200 flex items-start gap-1.5">
                   <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
-                  <span>{rule.caution}</span>
+                  <span>{language === 'vi' ? (rule.caution_vi || rule.caution) : rule.caution}</span>
                 </div>
               )}
             </div>

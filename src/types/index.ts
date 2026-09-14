@@ -23,14 +23,20 @@ export interface Facility {
 export interface LegalRule {
   id: string;
   topic: string;
+  topic_vi?: string;
   rule: string;
+  rule_vi?: string;
   legal_basis: string;
   article: string;
+  article_vi?: string;
   issue_date: string;
   effective_status: string;
+  effective_status_vi?: string;
   source_url: string;
   simulator_use: string;
+  simulator_use_vi?: string;
   caution: string;
+  caution_vi?: string;
 }
 
 export interface RegulatoryRule {

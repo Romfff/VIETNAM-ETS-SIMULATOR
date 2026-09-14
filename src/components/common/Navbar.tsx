@@ -44,9 +44,6 @@ export const Navbar: React.FC = () => {
                 <span className="font-extrabold text-base sm:text-lg text-slate-950 tracking-tight">
                   VIETNAM ETS SIMULATOR
                 </span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200 font-mono">
-                  QĐ 699/QĐ-BNNMT
-                </span>
               </div>
               <p className="text-xs text-slate-500 hidden sm:block font-normal">
                 {t('Nền tảng Thẩm định Pháp lý & Mô phỏng Tuân thủ Hạn ngạch Phát thải', 'Vietnam GHG Emission Trading Scheme Simulation & Compliance Platform')}

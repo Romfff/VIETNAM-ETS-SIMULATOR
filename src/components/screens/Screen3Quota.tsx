@@ -36,12 +36,6 @@ export const Screen3Quota: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
             {t('Cơ sở có thuộc diện được phân bổ hạn ngạch phát thải 2025–2026?', 'Is this facility included in the 2025–2026 quota allocation scheme?')}
           </h2>
-          <p className="text-xs text-slate-500 mt-1 max-w-2xl">
-            {t(
-              'Căn cứ Điều 12 Nghị định 06 (sửa đổi) và Quyết định số 699/QĐ-BNNMT ngày 27/02/2026 của Bộ Nông nghiệp & Môi trường.',
-              'Pursuant to Article 12 Decree 06 and Decision 699/QĐ-BNNMT dated 27/02/2026.'
-            )}
-          </p>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
@@ -110,20 +104,6 @@ export const Screen3Quota: React.FC = () => {
               </div>
               <div className="text-[11px] text-slate-400 mt-0.5 font-mono">tCO2e {t('(Dùng cho Tuân thủ)', '(For Compliance)')}</div>
             </div>
-          </div>
-
-          {/* National Pilot Context Note */}
-          <div className="bg-white/80 rounded-xl border border-slate-200 p-4 text-xs text-slate-700 space-y-1">
-            <div className="font-bold text-slate-900 flex items-center gap-1.5">
-              <Layers className="w-4 h-4 text-slate-600" />
-              {t('Bối cảnh Tổng hạn ngạch Quốc gia (Quyết định 263/QĐ-TTg):', 'National Cap Context (Decision 263/QĐ-TTg):')}
-            </div>
-            <p className="text-slate-600 leading-relaxed">
-              {t(
-                'Thủ tướng Chính phủ đã phê duyệt tổng hạn ngạch KNK thí điểm: Năm 2025 là 243,082,392 tCO2e; Năm 2026 là 268,391,454 tCO2e cho 34 nhà máy nhiệt điện, 25 cơ sở sản xuất sắt thép và 51 nhà máy sản xuất clanhke xi măng. Cơ sở này chiếm một tỷ trọng cụ thể trong trần phát thải quốc gia.',
-                'Prime Minister approved pilot national caps: 2025 is 243,082,392 tCO2e; 2026 is 268,391,454 tCO2e across 34 thermal, 25 steel, and 51 cement facilities. This facility holds a binding share of this national cap.'
-              )}
-            </p>
           </div>
         </div>
       ) : (

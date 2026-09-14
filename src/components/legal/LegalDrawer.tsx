@@ -1,11 +1,11 @@
 import React from 'react';
-import { X, ExternalLink, ShieldCheck, AlertTriangle, Calendar, FileText, CheckCircle2 } from 'lucide-react';
+import { X, ShieldCheck, AlertTriangle, Calendar, FileText, CheckCircle2 } from 'lucide-react';
 import { useSimulator } from '../../context/SimulatorContext';
 import { useLanguage } from '../../context/LanguageContext';
 
 export const LegalDrawer: React.FC = () => {
   const { isLegalDrawerOpen, closeLegalDrawer, activeLegalRule, legalRules, openLegalDrawer } = useSimulator();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   if (!isLegalDrawerOpen) return null;
 
@@ -50,10 +50,10 @@ export const LegalDrawer: React.FC = () => {
                 {/* Topic Banner */}
                 <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 bg-slate-200/80 px-2.5 py-0.5 rounded font-mono">
-                    {activeLegalRule.topic}
+                    {language === 'vi' ? (activeLegalRule.topic_vi || activeLegalRule.topic) : activeLegalRule.topic}
                   </span>
                   <h4 className="text-base font-bold text-slate-950 mt-2">
-                    {activeLegalRule.legal_basis} — {activeLegalRule.article}
+                    {activeLegalRule.legal_basis} — {language === 'vi' ? (activeLegalRule.article_vi || activeLegalRule.article) : activeLegalRule.article}
                   </h4>
                 </div>
 
@@ -64,7 +64,7 @@ export const LegalDrawer: React.FC = () => {
                     {t('Nội dung quy định / Kết luận pháp lý', 'Statutory Rule / Legal Finding')}
                   </div>
                   <p className="text-sm font-medium text-slate-800 leading-relaxed bg-slate-50 p-3.5 rounded-lg border border-slate-100">
-                    "{activeLegalRule.rule}"
+                    "{language === 'vi' ? (activeLegalRule.rule_vi || activeLegalRule.rule) : activeLegalRule.rule}"
                   </p>
                 </div>
 
@@ -86,7 +86,7 @@ export const LegalDrawer: React.FC = () => {
                       {t('Tình trạng hiệu lực', 'Effective Status')}
                     </div>
                     <div className="text-sm font-semibold text-emerald-700">
-                      {activeLegalRule.effective_status}
+                      {language === 'vi' ? (activeLegalRule.effective_status_vi || activeLegalRule.effective_status) : activeLegalRule.effective_status}
                     </div>
                   </div>
                 </div>
@@ -98,35 +98,20 @@ export const LegalDrawer: React.FC = () => {
                     {t('Ứng dụng trong Simulator', 'Simulator Implementation')}
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    {activeLegalRule.simulator_use}
+                    {language === 'vi' ? (activeLegalRule.simulator_use_vi || activeLegalRule.simulator_use) : activeLegalRule.simulator_use}
                   </p>
                 </div>
 
                 {/* Caution note */}
-                {activeLegalRule.caution && (
+                {(activeLegalRule.caution || activeLegalRule.caution_vi) && (
                   <div className="bg-amber-50 rounded-xl border border-amber-200 p-4">
                     <div className="text-xs font-bold text-amber-800 uppercase tracking-wider mb-1 flex items-center gap-1.5">
                       <AlertTriangle className="w-4 h-4 text-amber-600" />
                       {t('Lưu ý quan trọng & Ranh giới pháp lý', 'Caution & Guardrail')}
                     </div>
                     <p className="text-xs text-amber-900 leading-relaxed">
-                      {activeLegalRule.caution}
+                      {language === 'vi' ? (activeLegalRule.caution_vi || activeLegalRule.caution) : activeLegalRule.caution}
                     </p>
-                  </div>
-                )}
-
-                {/* Source link */}
-                {activeLegalRule.source_url && (
-                  <div className="pt-2">
-                    <a
-                      href={activeLegalRule.source_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-xs transition-all"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>{t('Xem văn bản gốc tại Cổng TTĐT Chính phủ', 'View official text on Government Portal')}</span>
-                    </a>
                   </div>
                 )}
               </div>
@@ -150,9 +135,11 @@ export const LegalDrawer: React.FC = () => {
                   >
                     <span className="truncate pr-2">
                       <span className="font-mono font-bold text-blue-600 mr-2">{rule.id}</span>
-                      {rule.legal_basis} — {rule.topic}
+                      {rule.legal_basis} — {language === 'vi' ? (rule.topic_vi || rule.topic) : rule.topic}
                     </span>
-                    <span className="text-[10px] text-slate-400 whitespace-nowrap">{rule.article}</span>
+                    <span className="text-[10px] text-slate-400 whitespace-nowrap">
+                      {language === 'vi' ? (rule.article_vi || rule.article) : rule.article}
+                    </span>
                   </button>
                 ))}
               </div>

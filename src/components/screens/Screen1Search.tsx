@@ -19,6 +19,7 @@ import { useSimulator } from '../../context/SimulatorContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { LegalButton } from '../legal/LegalButton';
 import type { SectorType } from '../../types';
+import { matchVietnamese } from '../../utils/searchUtils';
 
 export const Screen1Search: React.FC = () => {
   const { 
@@ -39,10 +40,12 @@ export const Screen1Search: React.FC = () => {
   const filteredFacilities = useMemo(() => {
     return facilities.filter((f) => {
       const matchQuery = 
-        f.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        f.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        f.tax_id.includes(searchQuery) ||
-        f.address.toLowerCase().includes(searchQuery.toLowerCase());
+        f.id.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
+        matchVietnamese(f.name, searchQuery) ||
+        f.tax_id.includes(searchQuery.trim()) ||
+        matchVietnamese(f.address, searchQuery) ||
+        matchVietnamese(f.representative, searchQuery) ||
+        matchVietnamese(f.product_vi || f.product, searchQuery);
       
       const matchSector = selectedSector === 'All' || f.sector === selectedSector;
 
