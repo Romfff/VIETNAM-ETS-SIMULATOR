@@ -19,7 +19,7 @@ export const Screen3Quota: React.FC = () => {
     state, 
     setCurrentScreen 
   } = useSimulator();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   const isIncluded = !!selectedFacility?.is_in_qd699;
 
@@ -59,7 +59,7 @@ export const Screen3Quota: React.FC = () => {
                 {selectedFacility.name}
               </h3>
               <p className="text-xs text-slate-600">
-                {t('Mã cơ sở:', 'Facility ID:')} <span className="font-mono font-bold text-slate-800">{selectedFacility.id}</span> • {t('Lĩnh vực:', 'Sector:')} <strong className="text-slate-800">{selectedFacility.sector_vi}</strong> • {t('Mã số thuế:', 'Tax ID:')} <span className="font-mono text-slate-800">{selectedFacility.tax_id}</span>
+                {t('Mã cơ sở:', 'Facility ID:')} <span className="font-mono font-bold text-slate-800">{selectedFacility.id}</span> • {t('Lĩnh vực:', 'Sector:')} <strong className="text-slate-800">{language === 'vi' ? selectedFacility.sector_vi : selectedFacility.sector}</strong> • {t('Mã số thuế:', 'Tax ID:')} <span className="font-mono text-slate-800">{selectedFacility.tax_id}</span>
               </p>
             </div>
 
@@ -68,7 +68,7 @@ export const Screen3Quota: React.FC = () => {
                 {t('Căn cứ pháp lý phân bổ', 'Legal Basis')}
               </div>
               <div className="text-xs font-bold text-emerald-800">
-                Quyết định 699/QĐ-BNNMT
+                {t('Quyết định 699/QĐ-BNNMT', 'Decision 699/QD-BNNMT')}
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ export const Screen3Quota: React.FC = () => {
               <div className="text-2xl font-extrabold text-slate-900 font-mono">
                 {selectedFacility.allocation_2025.toLocaleString()}
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5">tCO2e ({selectedFacility.product_vi})</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">tCO2e ({language === 'vi' ? selectedFacility.product_vi : selectedFacility.product})</div>
             </div>
 
             <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-xs">
@@ -92,7 +92,7 @@ export const Screen3Quota: React.FC = () => {
               <div className="text-2xl font-extrabold text-slate-900 font-mono">
                 {selectedFacility.allocation_2026.toLocaleString()}
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5">tCO2e ({selectedFacility.product_vi})</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">tCO2e ({language === 'vi' ? selectedFacility.product_vi : selectedFacility.product})</div>
             </div>
 
             <div className="bg-[#145f4b] rounded-xl p-4 text-white shadow-xs border border-[#0f4f3e]">

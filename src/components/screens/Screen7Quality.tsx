@@ -112,7 +112,7 @@ export const Screen7Quality: React.FC = () => {
                   </p>
 
                   <div className="text-[11px] text-slate-400 font-medium">
-                    {t('Cơ sở tham chiếu:', 'Reference Basis:')} {dim.legalNote}
+                    {t('Cơ sở tham chiếu:', 'Reference Basis:')} {language === 'vi' ? (dim.legalNoteVi || dim.legalNote) : (dim.legalNoteEn || dim.legalNote)}
                   </div>
                 </div>
 

@@ -113,10 +113,10 @@ export const Screen2Inventory: React.FC = () => {
               {t('Danh mục kiểm kê áp dụng', 'Applicable Inventory List')}
             </div>
             <div className="text-sm font-bold text-slate-900">
-              {inventoryResult.applicableList}
+              {language === 'vi' ? inventoryResult.applicableList : inventoryResult.applicableListEn}
             </div>
             <div className="text-[11px] text-slate-500">
-              {inventoryResult.listEffectivePeriod}
+              {language === 'vi' ? inventoryResult.listEffectivePeriod : inventoryResult.listEffectivePeriodEn}
             </div>
           </div>
         </div>

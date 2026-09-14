@@ -14,7 +14,7 @@ export const PrintableReportModal: React.FC = () => {
     complianceResult,
     dataQualityReport 
   } = useSimulator();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   // Close on Escape key & lock background scroll
   useEffect(() => {
@@ -100,10 +100,10 @@ export const PrintableReportModal: React.FC = () => {
                 VIETNAM EMISSION TRADING SCHEME (ETS) SIMULATOR
               </div>
               <h1 className="text-2xl font-black tracking-tight text-slate-900 mt-1">
-                BÁO CÁO THẨM ĐỊNH HẠN NGẠCH & VỊ THẾ TUÂN THỦ ETS
+                {t('BÁO CÁO THẨM ĐỊNH HẠN NGẠCH & VỊ THẾ TUÂN THỦ ETS', 'ETS QUOTA & COMPLIANCE ASSESSMENT REPORT')}
               </h1>
               <p className="text-xs text-slate-500 mt-0.5">
-                Căn cứ Nghị định 06/2022/NĐ-CP (sửa đổi theo VBHN 48) và Quyết định 699/QĐ-BNNMT
+                {t('Căn cứ Nghị định 06/2022/NĐ-CP (sửa đổi theo VBHN 48) và Quyết định 699/QĐ-BNNMT', 'Pursuant to Decree 06/2022/ND-CP (amended per Decree 48) and Decision 699/QD-BNNMT')}
               </p>
             </div>
 
@@ -117,30 +117,30 @@ export const PrintableReportModal: React.FC = () => {
           {/* Section 1: Facility Profile */}
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 pb-1">
-              I. THÔNG TIN NHẬN DIỆN CƠ SỞ PHÁT THẢI
+              {t('I. THÔNG TIN NHẬN DIỆN CƠ SỞ PHÁT THẢI', 'I. FACILITY IDENTIFICATION & REGISTRY DATA')}
             </h3>
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div>
-                <span className="text-slate-500 block">Tên cơ sở / Doanh nghiệp:</span>
+                <span className="text-slate-500 block">{t('Tên cơ sở / Doanh nghiệp:', 'Facility / Company Name:')}</span>
                 <span className="font-bold text-sm text-slate-900">
-                  {selectedFacility?.name || state.manual_facility_name || 'Cơ sở tự do'}
+                  {selectedFacility?.name || state.manual_facility_name || t('Cơ sở tự do', 'Manual Facility')}
                 </span>
               </div>
               <div>
-                <span className="text-slate-500 block">Mã số thuế & Mã cơ sở:</span>
+                <span className="text-slate-500 block">{t('Mã số thuế & Mã cơ sở:', 'Tax ID & Facility Code:')}</span>
                 <span className="font-bold text-sm font-mono text-slate-900">
                   {selectedFacility?.tax_id || state.manual_tax_id || 'N/A'} [{selectedFacility?.id || 'MANUAL'}]
                 </span>
               </div>
               <div>
-                <span className="text-slate-500 block">Lĩnh vực sản xuất & Đơn vị sản phẩm:</span>
+                <span className="text-slate-500 block">{t('Lĩnh vực sản xuất & Đơn vị sản phẩm:', 'Sector & Product Unit:')}</span>
                 <span className="font-semibold text-slate-800">
-                  {selectedFacility?.sector_vi || state.sector} ({selectedFacility?.product_unit || 'N/A'})
+                  {language === 'vi' ? (selectedFacility?.sector_vi || state.sector) : (selectedFacility?.sector || state.sector)} ({selectedFacility?.product_unit || 'N/A'})
                 </span>
               </div>
               <div>
-                <span className="text-slate-500 block">Địa chỉ hoạt động:</span>
-                <span className="text-slate-700">{selectedFacility?.address || 'Khai báo theo thực tế'}</span>
+                <span className="text-slate-500 block">{t('Địa chỉ hoạt động:', 'Operational Address:')}</span>
+                <span className="text-slate-700">{selectedFacility?.address || t('Khai báo theo thực tế', 'Self-declared')}</span>
               </div>
             </div>
           </div>
@@ -148,27 +148,29 @@ export const PrintableReportModal: React.FC = () => {
           {/* Section 2: Assessment Findings */}
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 pb-1">
-              II. KẾT QUẢ THẨM ĐỊNH NGHĨA VỤ PHÁP LÝ (LEGAL ASSESSMENT)
+              {t('II. KẾT QUẢ THẨM ĐỊNH NGHĨA VỤ PHÁP LÝ (LEGAL ASSESSMENT)', 'II. STATUTORY COMPLIANCE ASSESSMENT FINDINGS')}
             </h3>
             
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div className="border border-slate-200 rounded-lg p-3 bg-slate-50">
-                <div className="text-slate-500 font-bold mb-1">1. Nghĩa vụ Kiểm kê Khí nhà kính (Điều 6):</div>
+                <div className="text-slate-500 font-bold mb-1">{t('1. Nghĩa vụ Kiểm kê Khí nhà kính (Điều 6):', '1. GHG Inventory Obligation (Article 6):')}</div>
                 <div className="font-bold text-slate-900">
-                  {inventoryResult.statusLabelVi}
+                  {language === 'vi' ? inventoryResult.statusLabelVi : inventoryResult.statusLabelEn}
                 </div>
                 <div className="text-[11px] text-slate-600 mt-1">
-                  Danh mục áp dụng: {inventoryResult.applicableList}
+                  {t('Danh mục áp dụng:', 'Applicable List:')} {language === 'vi' ? inventoryResult.applicableList : inventoryResult.applicableListEn}
                 </div>
               </div>
 
               <div className="border border-slate-200 rounded-lg p-3 bg-slate-50">
-                <div className="text-slate-500 font-bold mb-1">2. Nghĩa vụ Hạn ngạch ETS Thí điểm (Điều 12, QĐ 699):</div>
+                <div className="text-slate-500 font-bold mb-1">{t('2. Nghĩa vụ Hạn ngạch ETS Thí điểm (Điều 12, QĐ 699):', '2. Pilot ETS Quota Scope (Article 12, Dec 699):')}</div>
                 <div className="font-bold text-slate-900">
-                  {selectedFacility ? 'THUỘC DIỆN PHÂN BỔ HẠN NGẠCH (QĐ 699)' : 'CHƯA CÓ TRONG DANH SÁCH PHÂN BỔ HIỆN HÀNH'}
+                  {selectedFacility 
+                    ? t('THUỘC DIỆN PHÂN BỔ HẠN NGẠCH (QĐ 699)', 'OFFICIAL QUOTA ALLOCATION (DEC 699)') 
+                    : t('CHƯA CÓ TRONG DANH SÁCH PHÂN BỔ HIỆN HÀNH', 'NOT LISTED IN CURRENT QUOTA ALLOCATION')}
                 </div>
                 <div className="text-[11px] text-slate-600 mt-1 font-mono">
-                  {selectedFacility ? `2025: ${selectedFacility.allocation_2025.toLocaleString()} tCO2e | 2026: ${selectedFacility.allocation_2026.toLocaleString()} tCO2e` : 'Không áp dụng'}
+                  {selectedFacility ? `2025: ${selectedFacility.allocation_2025.toLocaleString()} tCO2e | 2026: ${selectedFacility.allocation_2026.toLocaleString()} tCO2e` : t('Không áp dụng', 'Not applicable')}
                 </div>
               </div>
             </div>
@@ -177,56 +179,58 @@ export const PrintableReportModal: React.FC = () => {
           {/* Section 3: Surrender Balance Sheet */}
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200 pb-1">
-              III. BẢNG CÂN ĐỐI NGHĨA VỤ NỘP BÙ HẠN NGẠCH GIAI ĐOẠN 2025–2026 (ARTICLE 19)
+              {t('III. BẢNG CÂN ĐỐI NGHĨA VỤ NỘP BÙ HẠN NGẠCH GIAI ĐOẠN 2025–2026 (ARTICLE 19)', 'III. 2025–2026 SURRENDER BALANCE SHEET (ARTICLE 19)')}
             </h3>
 
             <table className="w-full text-xs border border-slate-300">
               <thead className="bg-slate-100 border-b border-slate-300 font-bold text-slate-700">
                 <tr>
-                  <th className="p-2 text-left">Chỉ tiêu thẩm định</th>
-                  <th className="p-2 text-center w-32">Căn cứ pháp lý</th>
-                  <th className="p-2 text-right w-40">Khối lượng (tCO2e)</th>
+                  <th className="p-2 text-left">{t('Chỉ tiêu thẩm định', 'Assessment Metric')}</th>
+                  <th className="p-2 text-center w-32">{t('Căn cứ pháp lý', 'Legal Authority')}</th>
+                  <th className="p-2 text-right w-40">{t('Khối lượng (tCO2e)', 'Quantity (tCO2e)')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
                 <tr>
-                  <td className="p-2">1. Tổng hạn ngạch được phân bổ chính thức (2025 + 2026)</td>
-                  <td className="p-2 text-center text-slate-500">QĐ 699/QĐ-BNNMT</td>
+                  <td className="p-2">{t('1. Tổng hạn ngạch được phân bổ chính thức (2025 + 2026)', '1. Total Official Allocated Allowances (2025 + 2026)')}</td>
+                  <td className="p-2 text-center text-slate-500">{t('QĐ 699/QĐ-BNNMT', 'Dec 699/QD-BNNMT')}</td>
                   <td className="p-2 text-right font-mono font-bold">{complianceResult.phaseAllocationTotal.toLocaleString()}</td>
                 </tr>
                 <tr>
-                  <td className="p-2">2. Giao dịch mua / bán hạn ngạch ròng</td>
-                  <td className="p-2 text-center text-slate-500">Sàn giao dịch KNK</td>
+                  <td className="p-2">{t('2. Giao dịch mua / bán hạn ngạch ròng', '2. Net Allowance Trades (+Buy / -Sell)')}</td>
+                  <td className="p-2 text-center text-slate-500">{t('Sàn giao dịch KNK', 'Carbon Exchange')}</td>
                   <td className="p-2 text-right font-mono">{(complianceResult.netAllowanceTrades || 0) > 0 ? '+' : ''}{complianceResult.netAllowanceTrades.toLocaleString()}</td>
                 </tr>
                 <tr>
-                  <td className="p-2">3. Hạn ngạch vay mượn từ kỳ sau (Đủ điều kiện, trần 15%)</td>
-                  <td className="p-2 text-center text-slate-500">Điều 19.6 VBHN 48</td>
+                  <td className="p-2">{t('3. Hạn ngạch vay mượn từ kỳ sau (Đủ điều kiện, trần 15%)', '3. Borrowed Allowances from Next Phase (Eligible, 15% Cap)')}</td>
+                  <td className="p-2 text-center text-slate-500">{t('Điều 19.6 VBHN 48', 'Art 19.6 Decree 48')}</td>
                   <td className="p-2 text-right font-mono">+{complianceResult.eligibleBorrowed.toLocaleString()}</td>
                 </tr>
                 <tr className="bg-slate-50 font-bold">
-                  <td className="p-2">TỔNG HẠN NGẠCH KHẢ DỤNG (A + Trades + Borrowed)</td>
+                  <td className="p-2">{t('TỔNG HẠN NGẠCH KHẢ DỤNG (A + Trades + Borrowed)', 'TOTAL AVAILABLE ALLOWANCES (Allocated + Trades + Borrowed)')}</td>
                   <td className="p-2 text-center text-slate-500">—</td>
                   <td className="p-2 text-right font-mono text-blue-700">{complianceResult.availableAllowances.toLocaleString()}</td>
                 </tr>
                 <tr>
-                  <td className="p-2">4. Phát thải trực tiếp thực tế được thẩm định (2025 + 2026)</td>
-                  <td className="p-2 text-center text-slate-500">Điều 19.5 VBHN 48</td>
+                  <td className="p-2">{t('4. Phát thải trực tiếp thực tế được thẩm định (2025 + 2026)', '4. Total Verified Direct Compliance Emissions (2025 + 2026)')}</td>
+                  <td className="p-2 text-center text-slate-500">{t('Điều 19.5 VBHN 48', 'Art 19.5 Decree 48')}</td>
                   <td className="p-2 text-right font-mono">{complianceResult.directEmisTotal?.toLocaleString() || '—'}</td>
                 </tr>
                 <tr>
-                  <td className="p-2">5. Tín chỉ carbon sử dụng để bù trừ (Đủ điều kiện, trần 30%)</td>
-                  <td className="p-2 text-center text-slate-500">Điều 19.8 VBHN 48</td>
+                  <td className="p-2">{t('5. Tín chỉ carbon sử dụng để bù trừ (Đủ điều kiện, trần 30%)', '5. Eligible Carbon Credits for Offset (Max 30% Cap)')}</td>
+                  <td className="p-2 text-center text-slate-500">{t('Điều 19.8 VBHN 48', 'Art 19.8 Decree 48')}</td>
                   <td className="p-2 text-right font-mono text-emerald-700">-{complianceResult.eligibleCredits.toLocaleString()}</td>
                 </tr>
                 <tr className="bg-slate-50 font-bold">
-                  <td className="p-2">NGHĨA VỤ NỘP BÙ THỰC TẾ (Direct Emissions - Credits)</td>
+                  <td className="p-2">{t('NGHĨA VỤ NỘP BÙ THỰC TẾ (Direct Emissions - Credits)', 'REQUIRED SURRENDER (Direct Emissions - Credits)')}</td>
                   <td className="p-2 text-center text-slate-500">—</td>
                   <td className="p-2 text-right font-mono">{complianceResult.requiredSurrender?.toLocaleString() || '—'}</td>
                 </tr>
                 <tr className="bg-slate-900 text-white font-extrabold text-sm">
-                  <td className="p-2.5">VỊ THẾ TUÂN THỦ (COMPLIANCE GAP): {complianceResult.status}</td>
-                  <td className="p-2.5 text-center text-xs font-normal text-slate-300">Trước 31/12/2027</td>
+                  <td className="p-2.5">
+                    {t('VỊ THẾ TUÂN THỦ (COMPLIANCE GAP):', 'COMPLIANCE GAP:')} {complianceResult.status === 'SURPLUS' ? t('DƯ THỪA (SURPLUS)', 'SURPLUS') : complianceResult.status === 'DEFICIT' ? t('THÂM HỤT (DEFICIT)', 'DEFICIT') : complianceResult.status}
+                  </td>
+                  <td className="p-2.5 text-center text-xs font-normal text-slate-300">{t('Trước 31/12/2027', 'By Dec 31, 2027')}</td>
                   <td className="p-2.5 text-right font-mono">
                     {complianceResult.complianceGap !== null ? `${complianceResult.complianceGap >= 0 ? '+' : ''}${complianceResult.complianceGap.toLocaleString()} tCO2e` : '—'}
                   </td>
@@ -238,22 +242,25 @@ export const PrintableReportModal: React.FC = () => {
           {/* Section 4: Sign-off & Audit Seal */}
           <div className="pt-4 border-t border-slate-200 grid grid-cols-2 gap-8 text-xs">
             <div>
-              <div className="font-bold text-slate-700 mb-1">XÁC NHẬN CỦA HỆ THỐNG SIMULATOR</div>
+              <div className="font-bold text-slate-700 mb-1">{t('XÁC NHẬN CỦA HỆ THỐNG SIMULATOR', 'SIMULATOR SYSTEM AUDIT ATTESTATION')}</div>
               <p className="text-[11px] text-slate-500 leading-relaxed">
-                Bản báo cáo này được tạo tự động từ động cơ tính toán Vietnam ETS Simulator. Mô hình kiểm toán tuân thủ độ chính xác logic Excel và quy chuẩn pháp lý hiện hành của Việt Nam.
+                {t(
+                  'Bản báo cáo này được tạo tự động từ động cơ tính toán Vietnam ETS Simulator. Mô hình kiểm toán tuân thủ độ chính xác logic Excel và quy chuẩn pháp lý hiện hành của Việt Nam.',
+                  'This dossier is automatically generated by the Vietnam ETS Simulator engine. The audit model strictly conforms to Excel computational logic and prevailing Vietnamese statutory regulations.'
+                )}
               </p>
               <div className="mt-2 text-[10px] text-slate-400 font-mono">
-                Mức độ sẵn sàng dữ liệu: {dataQualityReport.overallScorePercent}% (Đạt tiêu chuẩn đánh giá)
+                {t('Mức độ sẵn sàng dữ liệu:', 'Data Readiness Score:')} {dataQualityReport.overallScorePercent}% {t('(Đạt tiêu chuẩn đánh giá)', '(Meets Audit Standard)')}
               </div>
             </div>
 
             <div className="text-center space-y-12">
               <div className="font-bold text-slate-800">
-                ĐẠI DIỆN CƠ SỞ / BỘ PHẬN PHÂN TÍCH
-                <span className="block font-normal text-[10px] text-slate-400">(Ký và ghi rõ họ tên)</span>
+                {t('ĐẠI DIỆN CƠ SỞ / BỘ PHẬN PHÂN TÍCH', 'FACILITY REPRESENTATIVE / ANALYST')}
+                <span className="block font-normal text-[10px] text-slate-400">{t('(Ký và ghi rõ họ tên)', '(Signature & Full Name)')}</span>
               </div>
               <div className="font-bold text-slate-900">
-                {selectedFacility?.representative || 'Ban Quản trị ETS'}
+                {selectedFacility?.representative || t('Ban Quản trị ETS', 'ETS Administration')}
               </div>
             </div>
           </div>

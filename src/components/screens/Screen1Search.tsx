@@ -31,7 +31,7 @@ export const Screen1Search: React.FC = () => {
     setManualMode,
     setCurrentScreen 
   } = useSimulator();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSector, setSelectedSector] = useState<'All' | SectorType>('All');
@@ -322,7 +322,7 @@ export const Screen1Search: React.FC = () => {
                           {facility.allocation_total.toLocaleString()} tCO2e
                         </div>
                         <div className="text-[10px] text-slate-400 font-medium">
-                          {facility.sector_vi}
+                          {language === 'vi' ? facility.sector_vi : facility.sector}
                         </div>
                       </div>
                     </div>
@@ -341,7 +341,7 @@ export const Screen1Search: React.FC = () => {
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-700 bg-slate-100 px-2 py-0.5 rounded mb-1.5 border border-slate-200 font-mono">
-                      {selectedFacility.id} • {selectedFacility.sector_vi}
+                      {selectedFacility.id} • {language === 'vi' ? selectedFacility.sector_vi : selectedFacility.sector}
                     </span>
                     <h3 className="text-base font-bold text-slate-950 leading-snug">
                       {selectedFacility.name}
@@ -410,7 +410,7 @@ export const Screen1Search: React.FC = () => {
                 <div className="text-xs text-slate-500 flex items-center justify-between border-t border-slate-100 pt-3">
                   <span>{t('Sản phẩm căn cứ:', 'Benchmark Product:')}</span>
                   <span className="font-semibold text-slate-800">
-                    {selectedFacility.product_vi} ({selectedFacility.product_unit})
+                    {language === 'vi' ? selectedFacility.product_vi : selectedFacility.product} ({selectedFacility.product_unit})
                   </span>
                 </div>
 

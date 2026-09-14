@@ -8,6 +8,8 @@ export interface DataQualityDimension {
   detailVi: string;
   detailEn: string;
   legalNote: string;
+  legalNoteVi: string;
+  legalNoteEn: string;
 }
 
 export interface DataQualityReport {
@@ -37,7 +39,9 @@ export function evaluateDataQuality(state: SimulatorState, isQuotaFacility: bool
       : state.manual_facility_name
         ? `Manual facility: ${state.manual_facility_name}`
         : 'No facility selected or name provided',
-    legalNote: 'Quyết định 699/QĐ-BNNMT & Đăng ký kinh doanh'
+    legalNote: 'Quyết định 699/QĐ-BNNMT & Đăng ký kinh doanh',
+    legalNoteVi: 'Quyết định 699/QĐ-BNNMT & Đăng ký kinh doanh',
+    legalNoteEn: 'Decision 699/QD-BNNMT & Business Registration Record'
   });
 
   // 2. Inventory Obligation Inputs
@@ -61,7 +65,9 @@ export function evaluateDataQuality(state: SimulatorState, isQuotaFacility: bool
       : state.annual_ghg !== null
         ? `Entered inventory emission: ${state.annual_ghg.toLocaleString()} tCO2e (Requires official list lookup)`
         : 'No inventory emissions or PM list verification entered',
-    legalNote: 'VBHN 48/VBHN-BNNMT Điều 6 & QĐ 13/2024, QĐ 42/2026'
+    legalNote: 'VBHN 48/VBHN-BNNMT Điều 6 & QĐ 13/2024, QĐ 42/2026',
+    legalNoteVi: 'VBHN 48/VBHN-BNNMT Điều 6 & QĐ 13/2024, QĐ 42/2026',
+    legalNoteEn: 'Consolidated Decree 48 Article 6 & Decision 13/2024, 42/2026'
   });
 
   // 3. Historical Production & Emissions (3 years)
@@ -84,7 +90,9 @@ export function evaluateDataQuality(state: SimulatorState, isQuotaFacility: bool
       : totalHistFilled > 0
         ? `Filled ${totalHistFilled}/6 historical values. Missing ${6 - totalHistFilled} fields`
         : 'No 3-year historical data (Simulator will not fabricate facility emissions)',
-    legalNote: 'Nghị định 06/2022/NĐ-CP (sửa đổi), Phụ lục I - Phương pháp 01'
+    legalNote: 'Nghị định 06/2022/NĐ-CP (sửa đổi), Phụ lục I - Phương pháp 01',
+    legalNoteVi: 'Nghị định 06/2022/NĐ-CP (sửa đổi), Phụ lục I - Phương pháp 01',
+    legalNoteEn: 'Decree 06/2022/ND-CP (amended), Appendix I - Method 01'
   });
 
   // 4. Sector Benchmark B
@@ -99,7 +107,9 @@ export function evaluateDataQuality(state: SimulatorState, isQuotaFacility: bool
     detailEn: state.benchmark_override !== null && state.benchmark_override > 0
       ? `Using scenario testing value: ${state.benchmark_override} (Scenario value — Not official ministry benchmark)`
       : 'Official sector benchmark not yet promulgated. Use scenario override to test.',
-    legalNote: 'Bộ TN&MT chưa ban hành Benchmark B chính thức từng ngành'
+    legalNote: 'Bộ TN&MT chưa ban hành Benchmark B chính thức từng ngành',
+    legalNoteVi: 'Bộ TN&MT chưa ban hành Benchmark B chính thức từng ngành',
+    legalNoteEn: 'MoNRE has not promulgated official sector Benchmark B'
   });
 
   // 5. Policy Parameters g / r
@@ -115,7 +125,9 @@ export function evaluateDataQuality(state: SimulatorState, isQuotaFacility: bool
     detailEn: hasGR
       ? `Scenario parameters loaded: g = ${state.g}%, r = ${state.r}% (T factor = ${((1 + (state.g || 0)/100)*(1 - (state.r || 0)/100)).toFixed(4)})`
       : 'Official g/r parameters not published. Core guardrail: Never default to 0%.',
-    legalNote: 'Thông tư chuyên ngành & Quyết định giao mục tiêu NDC'
+    legalNote: 'Thông tư chuyên ngành & Quyết định giao mục tiêu NDC',
+    legalNoteVi: 'Thông tư chuyên ngành & Quyết định giao mục tiêu NDC',
+    legalNoteEn: 'Sectoral Circulars & NDC Target Allocation Decisions'
   });
 
   // 6. Direct Compliance Emissions
@@ -131,7 +143,9 @@ export function evaluateDataQuality(state: SimulatorState, isQuotaFacility: bool
     detailEn: hasComplianceEmis
       ? `Verified direct emissions entered for 2025 (${state.direct_emis_2025?.toLocaleString()}) and 2026 (${state.direct_emis_2026?.toLocaleString()})`
       : 'Missing verified direct emissions for the compliance phase (Historical E_avg cannot be substituted)',
-    legalNote: 'VBHN 48/VBHN-BNNMT Điều 19(5)'
+    legalNote: 'VBHN 48/VBHN-BNNMT Điều 19(5)',
+    legalNoteVi: 'VBHN 48/VBHN-BNNMT Điều 19(5)',
+    legalNoteEn: 'Consolidated Decree 48 Article 19(5)'
   });
 
   const readyCount = dimensions.filter(d => d.status === 'READY').length;

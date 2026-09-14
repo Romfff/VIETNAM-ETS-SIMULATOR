@@ -2,8 +2,14 @@ import { FacilityCategory, InventoryStatusType } from '../types';
 
 export interface InventoryAssessmentResult {
   applicableList: string;
+  applicableListVi: string;
+  applicableListEn: string;
   listEffectivePeriod: string;
+  listEffectivePeriodVi: string;
+  listEffectivePeriodEn: string;
   dateWarning: string;
+  dateWarningVi: string;
+  dateWarningEn: string;
   isDateWarning: boolean;
   criteriaTest: 'MEETS_CRITERIA' | 'DOES_NOT_MEET_CRITERIA' | 'INSUFFICIENT_DATA';
   criteriaDetails: {
@@ -49,21 +55,34 @@ export function assessInventoryObligation(params: {
   const applicableList = isAfterSept25_2026 
     ? 'Quyết định 42/2026/QĐ-TTg' 
     : 'Quyết định 13/2024/QĐ-TTg';
-  const listEffectivePeriod = isAfterSept25_2026
+  const applicableListVi = applicableList;
+  const applicableListEn = isAfterSept25_2026 
+    ? 'Decision 42/2026/QD-TTg' 
+    : 'Decision 13/2024/QD-TTg';
+
+  const listEffectivePeriodVi = isAfterSept25_2026
     ? 'Có hiệu lực từ 25/09/2026 (Thay thế QĐ 13/2024)'
     : 'Có hiệu lực từ 01/10/2024 đến hết 24/09/2026';
+  const listEffectivePeriodEn = isAfterSept25_2026
+    ? 'Effective from Sep 25, 2026 (Replaces Decision 13/2024)'
+    : 'Effective from Oct 01, 2024 until Sep 24, 2026';
+  const listEffectivePeriod = listEffectivePeriodVi;
 
-  let dateWarning = 'OK';
+  let dateWarningVi = 'OK';
+  let dateWarningEn = 'OK';
   let isDateWarning = false;
   // Compare with current actual date: 2026-09-14
   const todayStr = '2026-09-14';
   if (assessmentDate < '2026-09-25' && todayStr >= '2026-09-25') {
-    dateWarning = 'Ngày đánh giá sử dụng danh mục kiểm kê đã hết hiệu lực (QĐ 13).';
+    dateWarningVi = 'Ngày đánh giá sử dụng danh mục kiểm kê đã hết hiệu lực (QĐ 13).';
+    dateWarningEn = 'Assessment date references an expired inventory list (Decision 13).';
     isDateWarning = true;
   } else if (assessmentDate >= '2026-09-25' && todayStr < '2026-09-25') {
-    dateWarning = 'Ngày đánh giá trong tương lai; Quyết định 42 đã ban hành nhưng chưa đến ngày hiệu lực (25/09/2026).';
+    dateWarningVi = 'Ngày đánh giá trong tương lai; Quyết định 42 đã ban hành nhưng chưa đến ngày hiệu lực (25/09/2026).';
+    dateWarningEn = 'Assessment date in the future; Decision 42 is promulgated but not yet in effect (Sep 25, 2026).';
     isDateWarning = true;
   }
+  const dateWarning = dateWarningVi;
 
   // 2. Article 6 criteria test (48/VBHN-BNNMT Điều 6)
   const ghgMet = annualGhg !== null && annualGhg >= 3000;
@@ -143,8 +162,14 @@ export function assessInventoryObligation(params: {
 
   return {
     applicableList,
+    applicableListVi,
+    applicableListEn,
     listEffectivePeriod,
+    listEffectivePeriodVi,
+    listEffectivePeriodEn,
     dateWarning,
+    dateWarningVi,
+    dateWarningEn,
     isDateWarning,
     criteriaTest,
     criteriaDetails: {

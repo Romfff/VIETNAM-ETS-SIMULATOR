@@ -365,7 +365,7 @@ export const Screen4Allocation: React.FC = () => {
               <input
                 type="number"
                 step="0.00001"
-                placeholder="VD: 0.00151 hoặc 1.21"
+                placeholder={t('VD: 0.00151 hoặc 1.21', 'e.g. 0.00151 or 1.21')}
                 value={state.benchmark_override ?? ''}
                 onChange={(e) => updateField('benchmark_override', e.target.value ? parseFloat(e.target.value) : null)}
                 className="w-full px-3 py-2 rounded-lg border border-amber-300 bg-amber-50/30 font-mono text-xs focus:outline-none focus:ring-1 focus:ring-amber-500"
@@ -415,7 +415,7 @@ export const Screen4Allocation: React.FC = () => {
               <div className="text-2xl font-extrabold text-slate-900 font-mono">
                 {allocationResult.officialAllocation?.toLocaleString()}
               </div>
-              <div className="text-[10px] text-slate-400">tCO2e (Ràng buộc pháp lý)</div>
+              <div className="text-[10px] text-slate-400">tCO2e {t('(Ràng buộc pháp lý)', '(Statutory Binding)')}</div>
             </div>
 
             <div className={`rounded-xl p-4 border ${

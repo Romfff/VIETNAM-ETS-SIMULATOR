@@ -153,7 +153,7 @@ export const Screen8Summary: React.FC = () => {
                 {selectedFacility?.name || state.manual_facility_name || t('Cơ sở tự nhập', 'Manual Facility')}
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                {t('Lĩnh vực:', 'Sector:')} <strong className="text-slate-800">{selectedFacility?.sector_vi || state.sector}</strong> • {t('Mã số thuế:', 'Tax ID:')} <span className="font-mono text-slate-800">{selectedFacility?.tax_id || state.manual_tax_id || 'N/A'}</span>
+                {t('Lĩnh vực:', 'Sector:')} <strong className="text-slate-800">{language === 'vi' ? (selectedFacility?.sector_vi || state.sector) : (selectedFacility?.sector || state.sector)}</strong> • {t('Mã số thuế:', 'Tax ID:')} <span className="font-mono text-slate-800">{selectedFacility?.tax_id || state.manual_tax_id || 'N/A'}</span>
               </p>
             </div>
           </div>
@@ -177,7 +177,7 @@ export const Screen8Summary: React.FC = () => {
               {inventoryResult.overallStatus === 'YES' ? t('CÓ NGHĨA VỤ', 'MANDATORY') : inventoryResult.overallStatus}
             </div>
             <div className="text-[11px] text-slate-500">
-              {inventoryResult.applicableList}
+              {language === 'vi' ? inventoryResult.applicableList : inventoryResult.applicableListEn}
             </div>
           </div>
 
@@ -306,10 +306,10 @@ export const Screen8Summary: React.FC = () => {
             {t('Các căn cứ pháp lý cốt lõi áp dụng trong Báo cáo:', 'Governing Legal Authorities Cited in this Dossier:')}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600">
-            <div>• <strong>VBHN 48/VBHN-BNNMT</strong>: Nghị định 06/2022 sửa đổi (Điều 6, 12, 19)</div>
-            <div>• <strong>Quyết định 699/QĐ-BNNMT</strong>: Phân bổ 110 cơ sở thí điểm</div>
-            <div>• <strong>Quyết định 263/QĐ-TTg</strong>: Phê duyệt tổng hạn ngạch KNK quốc gia</div>
-            <div>• <strong>Quyết định 13 & 42/QĐ-TTg</strong>: Danh mục kiểm kê KNK quốc gia</div>
+            <div>• <strong>VBHN 48/VBHN-BNNMT</strong>: {t('Nghị định 06/2022 sửa đổi (Điều 6, 12, 19)', 'Decree 06/2022 as amended (Articles 6, 12, 19)')}</div>
+            <div>• <strong>{t('Quyết định 699/QĐ-BNNMT', 'Decision 699/QD-BNNMT')}</strong>: {t('Phân bổ 110 cơ sở thí điểm', 'Pilot quota allocation for 110 facilities')}</div>
+            <div>• <strong>{t('Quyết định 263/QĐ-TTg', 'Decision 263/QD-TTg')}</strong>: {t('Phê duyệt tổng hạn ngạch KNK quốc gia', 'Approval of national GHG quota cap')}</div>
+            <div>• <strong>{t('Quyết định 13 & 42/QĐ-TTg', 'Decision 13 & 42/QD-TTg')}</strong>: {t('Danh mục kiểm kê KNK quốc gia', 'National GHG inventory lists')}</div>
           </div>
         </div>
 

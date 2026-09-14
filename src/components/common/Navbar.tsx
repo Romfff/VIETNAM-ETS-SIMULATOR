@@ -76,9 +76,11 @@ export const Navbar: React.FC = () => {
                     ? 'bg-blue-50 text-blue-800 border-blue-200'
                     : 'bg-slate-100 text-slate-700 border-slate-200'
                 }`}
-                title={inventoryResult.listEffectivePeriod}
+                title={language === 'vi' ? inventoryResult.listEffectivePeriod : inventoryResult.listEffectivePeriodEn}
               >
-                {inventoryResult.applicableList.includes('42/2026') ? 'QĐ 42/2026' : 'QĐ 13/2024'}
+                {inventoryResult.applicableList.includes('42/2026') 
+                  ? (language === 'vi' ? 'QĐ 42/2026' : 'Dec 42/2026') 
+                  : (language === 'vi' ? 'QĐ 13/2024' : 'Dec 13/2024')}
               </button>
             </div>
 

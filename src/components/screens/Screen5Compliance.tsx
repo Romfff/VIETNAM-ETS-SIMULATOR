@@ -86,7 +86,7 @@ export const Screen5Compliance: React.FC = () => {
               )}
 
               <span className="text-xs text-slate-500 font-mono">
-                {selectedFacility ? `[${selectedFacility.id}] ${selectedFacility.name}` : (state.manual_facility_name || 'Cơ sở tự do')}
+                {selectedFacility ? `[${selectedFacility.id}] ${selectedFacility.name}` : (state.manual_facility_name || t('Cơ sở tự do', 'Manual Facility'))}
               </span>
             </div>
 
